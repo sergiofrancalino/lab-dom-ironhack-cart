@@ -1,19 +1,25 @@
 // ITERATION 1
 
-const { product } = require("puppeteer");
+// const { product } = require("puppeteer");
 
 function updateSubtotal(product) {
   
-  console.log('Calculating subtotal, yey!');
-  console.log(product);
-
+  //console.log('Calculating subtotal, yey!');  
+  //obter o elemento DOM que contém o price:
   const price = product.querySelector('.price span');
-  const quantity = product.querySelector('.quantity input');
-  const subtotal = product.querySelector('.subtotal span');
 
-  subtotal.innerText = +price.innerText * +quantity.value;
+  //obter a quantidade
+  const quantity = product.querySelector(".quantity input");
 
-  return +price.innerText * +quantity.value;
+  const subtotal = product.querySelector(".subtotal span");
+  
+  console.log(price.innerText);
+  console.log(quantity.value);
+
+  const total= (+price.innerText * +quantity.value);
+  subtotal.innerText = total; 
+
+  return total;
 
 }
 
@@ -26,18 +32,18 @@ function calculateAll() {
   // end of test
 
   // ITERATION 2
-  
-  const products = document.getElementsByClassName ('porduct');
-  let total = 0;
 
-  for (let i =0; i < product.length; i++){
-    total = updateSubtotal(product[i]);
+  const products = document.getElementsByClassName("product");
+  let total = 0
+  
+  for(let i=0; i<products.length; i++){
+    total += updateSubtotal(products[i]);
   }
 
   // ITERATION 3
 
-  const totalValue = document.querySelector(`#total-value span`);
-  totalValue.innerText = total;
+  const valortotal = document.querySelector("#total-value span");
+  valortotal.innerText = total;
 }
 
 // ITERATION 4
@@ -46,12 +52,12 @@ function removeProduct(event) {
   const target = event.currentTarget;
   console.log('The target in remove is:', target);
 
-  const btnpai = event.currentTarget.parentNode // div do botão
-  const produtoRemove = btnpai.parentNode // div do produto 
-  const linhaDoProduto = produtoRemove.parentNode //
+  const btnpai = event.currentTarget.parentNode; //div do botão
+  const produtoRemove =  btnpai.parentNode; // div do produto (td do html)
+  const linhadoproduto = produtoRemove.parentNode;
 
-  linhaDoProduto.removeChild(produtoRemove);
-  calculateAll(); 
+  linhadoproduto.removeChild(produtoRemove);
+  calculateAll();
 }
 
 // ITERATION 5
@@ -64,10 +70,11 @@ window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
 
-  const grupoBotoes = document.querySelectorAll(`.btn-remove`);
+  const grupoBotoes = document.querySelectorAll(".btn-remove");
   console.log(grupoBotoes);
-  
+
   grupoBotoes.forEach((botao)=>{
-    botao.addEventListener("click",removeProduct))
+    botao.addEventListener("click",removeProduct);
   })
-  
+
+});
