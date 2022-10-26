@@ -64,10 +64,10 @@ window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
 
-  const grupoBotoes = document.querySelectorAll(".btn-remove")
-  console.log(grupoBotoes)
+  const grupoBotoes = document.querySelectorAll(`.btn-remove`);
+  console.log(grupoBotoes);
   
   grupoBotoes.forEach((botao)=>{
-    botao.addEventListener("click",removeProduct)
-  })}
+    botao.addEventListener("click",removeProduct))
+  })
   
