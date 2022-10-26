@@ -5,9 +5,8 @@ function updateSubtotal(product) {
   //obter o elemento DOM que contém o price:
   const price = product.querySelector('.price span');
 
-  //obter a quantidade
+  //Obtendo os valores do HTML
   const quantity = product.querySelector(".quantity input");
-
   const subtotal = product.querySelector(".subtotal span");
   
   console.log(price.innerText);
@@ -50,10 +49,10 @@ function removeProduct(event) {
   console.log('The target in remove is:', target);
 
   const btnpai = event.currentTarget.parentNode; //div do botão
-  const produtoRemove =  btnpai.parentNode; // div do produto (td do html)
-  const linhadoproduto = produtoRemove.parentNode;
+  const produtoRemove =  btnpai.parentNode; // div do produto do html
+  const linhadoproduto = produtoRemove.parentNode; // div 
 
-  linhadoproduto.removeChild(produtoRemove);
+  linhadoproduto.removeChild(produtoRemove); // Remove o produto ao clickar no botão.
   calculateAll();
 }
 
