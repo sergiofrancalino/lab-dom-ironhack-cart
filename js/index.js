@@ -1,7 +1,4 @@
 // ITERATION 1
-
-// const { product } = require("puppeteer");
-
 function updateSubtotal(product) {
   
   //console.log('Calculating subtotal, yey!');  
